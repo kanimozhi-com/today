@@ -1,15 +1,11 @@
-name: Manual Trigger
+name: Manual Trigger Example
 
 on:
-  workflow_dispatch:  # Manual trigger for safety
+  workflow_dispatch:  # Enables manual trigger
 
 jobs:
-  build:
+  say-hello:
     runs-on: self-hosted
     steps:
-      - name: Checkout code
-        run: actions/checkout@v3
-
-      - name: build file
-        run: echo "successfully triggered"
-     
+      - name: Print Hello
+        run: echo "Hello from a manually triggered workflow!"
