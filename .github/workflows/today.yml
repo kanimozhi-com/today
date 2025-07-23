@@ -1,24 +1,15 @@
-name: Install VS Code on Self-Hosted Runner
+name: Manual Trigger
 
 on:
   workflow_dispatch:  # Manual trigger for safety
 
 jobs:
-  install-vscode:
+  build:
     runs-on: self-hosted
     steps:
-      - name: Update apt and install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y software-properties-common apt-transport-https wget
+      - name: Checkout code
+        run: actions/checkout@v3
 
-      - name: Add Microsoft GPG key and repository
-        run: |
-          wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-          sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-
-      - name: Install VS Code
-        run: sudo apt install -y code
-
-      - name: Verify VS Code installation
-        run: code --version
+      - name: build file
+        run: echo "successfully triggered"
+     
